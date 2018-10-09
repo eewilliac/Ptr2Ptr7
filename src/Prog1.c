@@ -12,8 +12,8 @@ int main(){
         printf("Problems finding file or nothing to do!!!");
         return 0;
     }
-    char **names=(char*)malloc(sizeof(char*)*line_count);
-    
+    char **names=malloc(sizeof(char*)*line_count);
+    build_array(names);
 
 }
 
@@ -35,7 +35,17 @@ int count_lines(){
 }
 
 void build_array(char *names[]){
-
+    int numOfLines=count_lines();
+    char temp[32];
+    if(numOfLines<=0){
+        return;
+    }
+    FILE *fp=fopen("./names.txt","r");
+    for(int cursor=0;cursor<numOfLines;cursor++){
+        fgets(temp,sizeof(temp),fp); //why is it sizeof(temp) vs strlen(temp)??????
+        printf("%s\n",temp);
+    }
+    fclose(fp);
 }
 
 void populate_list(char *names[]){
