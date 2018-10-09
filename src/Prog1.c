@@ -3,10 +3,18 @@
 #include <string.h>
 
 int count_lines();
+void build_array();
+void populate_list(char *names[]);
 
 int main(){
     int line_count=count_lines();
-    printf("linecount %d",line_count);
+    if(line_count<=0){
+        printf("Problems finding file or nothing to do!!!");
+        return 0;
+    }
+    char **names=(char*)malloc(sizeof(char*)*line_count);
+    
+
 }
 
 int count_lines(){
@@ -22,5 +30,14 @@ int count_lines(){
         }
         curr_char=fgetc(fp);
     }
+    fclose(fp);
     return line_count;
+}
+
+void build_array(char *names[]){
+
+}
+
+void populate_list(char *names[]){
+
 }
